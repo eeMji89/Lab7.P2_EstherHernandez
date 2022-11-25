@@ -4,6 +4,7 @@
  */
 package lab7.p2_estherhernandez;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -20,6 +21,8 @@ public class Seleccion {
     private int GC;
     private int Dif;
     private ArrayList <Jugador> Jugadores;
+     private File archivo= null ;
+    private ArrayList <Seleccion> Selecciones;
 
     public Seleccion() {
     }

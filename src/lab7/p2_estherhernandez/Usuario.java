@@ -1,8 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package lab7.p2_estherhernandez;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -13,10 +17,30 @@ public class Usuario {
     private String user;
     private String pw;
     private String tipoU;
-
+    private File archivo= null ;
+    private ArrayList <Usuario> Usuarios;
     public Usuario() {
     }
+    public Usuario(String path){
+        archivo = new File(path);
+    }
 
+    public File getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(File archivo) {
+        this.archivo = archivo;
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return Usuarios;
+    }
+
+    public void setUsuarios(ArrayList<Usuario> Usuarios) {
+        this.Usuarios = Usuarios;
+    }
+    
     public Usuario(String id, String user, String pw, String tipoU) {
         this.id = id;
         this.user = user;
@@ -58,8 +82,42 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", user=" + user + ", pw=" + pw + ", tipoU=" + tipoU + '}';
+        return  id + "," + user + "," + pw + "," + tipoU + ',';
     }
     
-    
+    public void escribirArchivo() throws IOException {
+        
+      FileWriter fw = null;
+      BufferedWriter bw = null;
+        try {
+            fw = new FileWriter(archivo,false);
+            bw = new BufferedWriter(fw);
+            for (Usuario usuario : Usuarios) {
+                bw.write(usuario.toString());
+                
+            }
+            bw.flush();
+        } catch (Exception e) {
+        }
+      bw.close();
+      fw.close();
+        
+    }
+    public void cargarArchivo(){
+        Scanner sc = null;
+        Usuarios = new ArrayList();
+        if (archivo.exists()) {
+            try {
+                sc = new Scanner(archivo);
+                sc.useDelimiter(",");
+                while(sc.hasNext()){
+                    Usuarios.add(new Usuario
+        (sc.next(),sc.next(),sc.next(),sc.next()));
+                }
+            } catch (Exception e) {
+            }
+            sc.close();
+        }
+        
+    }
 }
