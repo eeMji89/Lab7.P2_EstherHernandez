@@ -82,7 +82,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return  id + "," + user + "," + pw + "," + tipoU + ',';
+        return  ","+id + "," + user + "," + pw + "," + tipoU;
     }
     
     public void escribirArchivo() throws IOException {

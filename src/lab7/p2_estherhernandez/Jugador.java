@@ -1,8 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package lab7.p2_estherhernandez;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -19,6 +23,8 @@ public class Jugador {
     private int faltas;
     private String posicion;
     private int porterias;
+    private File archivo= null ;
+    private ArrayList <Jugador> jugadores;
 
     public Jugador() {
     }
@@ -123,11 +129,47 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "Jugador{" + "nombre=" + nombre + ", dorsal=" + dorsal + ", goles=" + goles + ", asistencia=" + asistencia + ", pj=" + pj + ", tarja=" + tarja + ", tarjr=" + tarjr + ", faltas=" + faltas + ", posicion=" + posicion + '}';
+        return "|" + nombre + "|" + dorsal + "|" + goles + "|" + asistencia + "|" + pj + "|" + tarja + "|" + tarjr + "|" + faltas + "|" + posicion ;
     }
     public String toStringP(){
-                return "Jugador{" + "nombre=" + nombre + ", dorsal=" + dorsal + ", goles=" + goles + ", asistencia=" + asistencia + ", pj=" + pj + ", tarja=" + tarja + ", tarjr=" + tarjr + ", faltas=" + faltas + ", posicion=" + posicion + "porterias imbatidas= "+porterias+"}";
+                return "/" + nombre + "/" + dorsal + "/" + goles + "/" + asistencia + "/" + pj + "/" + tarja + "/" + tarjr + "/" + faltas + "/" + posicion + "/"+porterias;
 
+    }
+    public void escribirArchivo() throws IOException {
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        try {
+            fw = new FileWriter(archivo, false);
+            bw = new BufferedWriter(fw);
+            for (Jugador t : jugadores) {
+                bw.write(jugadores.toString());
+            }
+            bw.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        bw.close();
+        fw.close();
+    }
+    
+    public void cargarArchivo() {
+        Scanner sc = null;
+        jugadores = new ArrayList();
+        if (archivo.exists()) {
+            try {
+                sc = new Scanner(archivo);
+                sc.useDelimiter(":");
+                while (sc.hasNext()) {
+                    jugadores.add(new Jugador(sc.next(),
+                                    sc.nextInt(),
+                                    sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.next(),
+                                    sc.nextInt()));
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            sc.close();
+        }
     }
     
     

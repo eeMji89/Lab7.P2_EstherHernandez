@@ -4,8 +4,12 @@
  */
 package lab7.p2_estherhernandez;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -26,7 +30,20 @@ public class Seleccion {
 
     public Seleccion() {
     }
-    
+    public Seleccion(String path){
+        archivo = new File(path);
+    }
+
+    public Seleccion(String nombre, int PJ, int PG, int PE, int PP, int GF, int GC, int Dif) {
+        this.nombre = nombre;
+        this.PJ = PJ;
+        this.PG = PG;
+        this.PE = PE;
+        this.PP = PP;
+        this.GF = GF;
+        this.GC = GC;
+        this.Dif = Dif;
+    }
     
     public Seleccion(String nombre, int PJ, int PG, int PE, int PP, int GF, int GC, int Dif, ArrayList<Jugador> Jugadores) {
         this.nombre = nombre;
@@ -40,6 +57,22 @@ public class Seleccion {
         this.Jugadores = Jugadores;
     }
 
+    public File getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(File archivo) {
+        this.archivo = archivo;
+    }
+
+    public ArrayList<Seleccion> getSelecciones() {
+        return Selecciones;
+    }
+
+    public void setSelecciones(ArrayList<Seleccion> Selecciones) {
+        this.Selecciones = Selecciones;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -114,8 +147,43 @@ public class Seleccion {
 
     @Override
     public String toString() {
-        return "Seleccion{" + "nombre=" + nombre + ", PJ=" + PJ + ", PG=" + PG + ", PE=" + PE + ", PP=" + PP + ", GF=" + GF + ", GC=" + GC + ", Dif=" + Dif + ", Jugadores=" + Jugadores + '}';
+        return   "="+ nombre + "=" + PJ + "=" + PG + "=" + PE + "=" + PP + "=" + GF + "=" + GC + "=" + Dif + "=" + Jugadores ;
     }
-    
+    public void escribirArchivo() throws IOException {
+        
+      FileWriter fw = null;
+      BufferedWriter bw = null;
+        try {
+            fw = new FileWriter(archivo,false);
+            bw = new BufferedWriter(fw);
+            for (Seleccion sel : Selecciones) {
+                bw.write(sel.toString());
+                
+            }
+            bw.flush();
+        } catch (Exception e) {
+        }
+      bw.close();
+      fw.close();
+        
+    }
+    public void cargarArchivo(){
+        Scanner sc = null;
+        Selecciones = new ArrayList();
+        if (archivo.exists()) {
+            try {
+                sc = new Scanner(archivo);
+                sc.useDelimiter("=");
+                while(sc.hasNext()){
+                    Selecciones.add(new Seleccion
+                            (sc.next(),sc.nextInt(),sc.nextInt(),sc.nextInt(),
+                            sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt()));
+                }
+            } catch (Exception e) {
+            }
+            sc.close();
+        }
+        
+    }
     
 }

@@ -4,6 +4,7 @@
  */
 package lab7.p2_estherhernandez;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -11,8 +12,8 @@ import java.util.ArrayList;
  * @author ELIZABETH HERNANDEZ
  */
 public class Partido {
-    private Seleccion Local;
-    private Seleccion visita;
+    private String LV;
+    
     private int goles;
     private int posesion;
     private int tirosT;
@@ -22,7 +23,8 @@ public class Partido {
     private ArrayList <Jugador> jtatjetaA;
     private ArrayList <Jugador> jtatjetaR;
     private ArrayList <Jugador> jgol;
-
+    private File archivo= null ;
+    private ArrayList <Partido> Partidos;
     public Partido() {
     }
 
@@ -33,11 +35,20 @@ public class Partido {
     public void setTirosM(int tirosM) {
         this.tirosM = tirosM;
     }
+
+    public Partido(String LV, int goles, int posesion, int tirosT, int tirosM, int faltas) {
+        this.LV = LV;
+        
+        this.goles = goles;
+        this.posesion = posesion;
+        this.tirosT = tirosT;
+        this.tirosM = tirosM;
+        this.faltas = faltas;
+    }
     
     
-    public Partido(Seleccion Local, Seleccion visita, int goles, int posesion, int tirosT,int tirosM, int faltas, ArrayList<Jugador> jfaltas, ArrayList<Jugador> jtatjetaA, ArrayList<Jugador> jtatjetaR, ArrayList<Jugador> jgol) {
-        this.Local = Local;
-        this.visita = visita;
+    public Partido(String LV, int goles, int posesion, int tirosT,int tirosM, int faltas, ArrayList<Jugador> jfaltas, ArrayList<Jugador> jtatjetaA, ArrayList<Jugador> jtatjetaR, ArrayList<Jugador> jgol) {
+        this.LV = LV;     
         this.goles = goles;
         this.posesion = posesion;
         this.tirosT = tirosT;
@@ -48,21 +59,14 @@ public class Partido {
         this.jgol = jgol;
     }
 
-    public Seleccion getLocal() {
-        return Local;
+    public String getLV() {
+        return LV;
     }
 
-    public void setLocal(Seleccion Local) {
-        this.Local = Local;
+    public void setLV(String LV) {
+        this.LV = LV;
     }
 
-    public Seleccion getVisita() {
-        return visita;
-    }
-
-    public void setVisita(Seleccion visita) {
-        this.visita = visita;
-    }
 
     public int getGoles() {
         return goles;
@@ -130,7 +134,7 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Partido{" + "Local=" + Local + ", visita=" + visita + ", goles=" + goles + ", posesion=" + posesion + ", tirosT=" + tirosT + ", tirosM=" + tirosM + ", faltas=" + faltas + ", jfaltas=" + jfaltas + ", jtatjetaA=" + jtatjetaA + ", jtatjetaR=" + jtatjetaR + ", jgol=" + jgol + '}';
+        return "Partido{" + "Local=" + LV + " goles=" + goles + ", posesion=" + posesion + ", tirosT=" + tirosT + ", tirosM=" + tirosM + ", faltas=" + faltas + ", jfaltas=" + jfaltas + ", jtatjetaA=" + jtatjetaA + ", jtatjetaR=" + jtatjetaR + ", jgol=" + jgol + '}';
     }
 
     
