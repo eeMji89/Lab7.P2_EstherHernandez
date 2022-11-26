@@ -55,7 +55,7 @@ public class Main extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jf_gol1 = new javax.swing.JFormattedTextField();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
         jFormattedTextField4 = new javax.swing.JFormattedTextField();
@@ -86,13 +86,13 @@ public class Main extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jc_selj = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jt_dorsal = new javax.swing.JTextField();
+        jt_nj = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jc_pos = new javax.swing.JComboBox<>();
         jPanel12 = new javax.swing.JPanel();
-        jComboBox12 = new javax.swing.JComboBox<>();
+        jc_usuarios = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -144,11 +144,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel10.setText("Equipo Local");
 
-        jc_Local.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel11.setText("Equipo visita");
-
-        jc_visita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel12.setText("Goles");
 
@@ -160,9 +156,14 @@ public class Main extends javax.swing.JFrame {
 
         jLabel15.setText("Faltas Cometidas");
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jf_gol1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField2ActionPerformed(evt);
+            }
+        });
 
         jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
@@ -232,7 +233,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jFormattedTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                             .addComponent(jFormattedTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                             .addComponent(jc_Local, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jFormattedTextField1)
+                            .addComponent(jf_gol1)
                             .addComponent(jFormattedTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                             .addComponent(jFormattedTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                             .addComponent(jc_lr, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -296,7 +297,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jf_gol1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
@@ -382,11 +383,16 @@ public class Main extends javax.swing.JFrame {
         jLabel9.setText("Selección");
 
         jButton3.setText("Agregar");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portero", "Defensa", "Mediocampistsa", "Delantero" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jc_pos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portero", "Defensa", "Mediocampistsa", "Delantero" }));
+        jc_pos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jc_posActionPerformed(evt);
             }
         });
 
@@ -401,7 +407,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(62, 62, 62)
-                        .addComponent(jTextField3))
+                        .addComponent(jt_nj))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -414,8 +420,8 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(57, 57, 57)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jc_selj, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField4)
-                            .addComponent(jComboBox2, 0, 199, Short.MAX_VALUE))))
+                            .addComponent(jt_dorsal)
+                            .addComponent(jc_pos, 0, 199, Short.MAX_VALUE))))
                 .addGap(160, 160, 160))
         );
         jPanel3Layout.setVerticalGroup(
@@ -424,15 +430,15 @@ public class Main extends javax.swing.JFrame {
                 .addGap(147, 147, 147)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jt_nj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_dorsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jc_pos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jc_selj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -443,8 +449,6 @@ public class Main extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Ingresar Jugador", jPanel3);
-
-        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel23.setText("Seleccionar Usuario");
 
@@ -482,7 +486,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboBox12, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jc_usuarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(252, 252, 252)
                         .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -493,7 +497,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(180, 180, 180)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jc_usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -530,18 +534,16 @@ public class Main extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Equipo", "Partidos Ganados", "Partidos empatados", "Partidos Perdidos", "Goles a Favor", "Goles en contra", "Diferencia de goles"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
-
-        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel22.setText("Seleccionar el grupo");
 
@@ -588,7 +590,7 @@ public class Main extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "", "Local", "Visitante", "Title 4"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -671,13 +673,13 @@ public class Main extends javax.swing.JFrame {
 
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Jugador", "Equipo", "Numero de Goles"
             }
         ));
         jScrollPane7.setViewportView(jTable7);
@@ -703,13 +705,13 @@ public class Main extends javax.swing.JFrame {
 
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Jugador", "Equipo", "Numero de asistencias"
             }
         ));
         jScrollPane6.setViewportView(jTable6);
@@ -922,9 +924,9 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void jc_posActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jc_posActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_jc_posActionPerformed
 
     private void bt_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginMouseClicked
         // TODO add your handling code here:
@@ -933,7 +935,9 @@ public class Main extends javax.swing.JFrame {
         File archivo = null;
         archivo = new File("./Usuarios.txt");
         u.setArchivo(archivo);
+        u.cargarArchivo();
         try {
+            
             u.escribirArchivo();
         } catch (IOException ex) {
             
@@ -959,6 +963,7 @@ public class Main extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(this, "Contraseña o usuario incorrecto");
             }
             else{
+                u.Usuarios.add(new Usuario("U0"+1+rd.nextInt(99),jt_usuario.getText(),jt_pass.getText(),"Espectador"));
                 LUsuarios.add(new Usuario("U0"+1+rd.nextInt(99),jt_usuario.getText(),jt_pass.getText(),"Espectador"));
                 jFrame2.setVisible(true);
                     this.setVisible(false);
@@ -969,13 +974,20 @@ public class Main extends javax.swing.JFrame {
           
             }
         }
-        u.setUsuarios(LUsuarios);
+        
         u.setArchivo(archivo);
-        try {
+        try {           
             u.escribirArchivo();
+            
         } catch (IOException ex) {
             
         }
+        DefaultComboBoxModel modelou= (DefaultComboBoxModel) jc_usuarios.getModel();
+        for (int i = 0; i < u.getUsuarios().size(); i++) {
+            modelou.addElement(u.getUsuarios().get(i).getUser());
+        }
+        jc_usuarios.setModel(modelou);
+        
     }//GEN-LAST:event_bt_loginMouseClicked
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -985,13 +997,23 @@ public class Main extends javax.swing.JFrame {
     private void jb_nsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_nsActionPerformed
         // TODO add your handling code here:
         String nombre=jt_ns.getText();
-        selecciones.add(new Seleccion(nombre,0,0,0,0,0,0,0));
-        //Seleccion s = new Seleccion(nombre);
-        DefaultComboBoxModel modeloS= ( DefaultComboBoxModel) jc_selj.getModel();
-       // modeloS.addElement(s);
+        selecciones.add(new Seleccion(nombre,0,0,0,0,0,0,0));       
+        DefaultComboBoxModel modeloS= ( DefaultComboBoxModel) jc_selj.getModel();      
         modeloS.addElement(nombre);
         jc_selj.setModel(modeloS);
     }//GEN-LAST:event_jb_nsActionPerformed
+
+    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String nombre = jt_nj.getText();
+        Integer.parseInt(jt_dorsal.getText());
+        String pos = jc_pos.getSelectedItem().toString();
+        String equipo = jc_selj.getSelectedItem().toString();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1047,10 +1069,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox11;
-    private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox9;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField10;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
@@ -1118,17 +1137,20 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JButton jb_epartido;
     private javax.swing.JButton jb_ns;
     private javax.swing.JComboBox<String> jc_Local;
     private javax.swing.JComboBox<String> jc_la;
     private javax.swing.JComboBox<String> jc_lr;
+    private javax.swing.JComboBox<String> jc_pos;
     private javax.swing.JComboBox<String> jc_selj;
+    private javax.swing.JComboBox<String> jc_usuarios;
     private javax.swing.JComboBox<String> jc_va;
     private javax.swing.JComboBox<String> jc_visita;
     private javax.swing.JComboBox<String> jc_vr;
+    private javax.swing.JFormattedTextField jf_gol1;
+    private javax.swing.JTextField jt_dorsal;
+    private javax.swing.JTextField jt_nj;
     private javax.swing.JTextField jt_ns;
     private javax.swing.JPasswordField jt_pass;
     private javax.swing.JTextField jt_usuario;

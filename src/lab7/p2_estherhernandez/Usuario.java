@@ -18,7 +18,7 @@ public class Usuario {
     private String pw;
     private String tipoU;
     private File archivo= null ;
-    private ArrayList <Usuario> Usuarios;
+    ArrayList <Usuario> Usuarios;
     public Usuario() {
     }
     public Usuario(String path){
