@@ -1010,9 +1010,16 @@ public class Main extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String nombre = jt_nj.getText();
-        Integer.parseInt(jt_dorsal.getText());
+        int d = Integer.parseInt(jt_dorsal.getText());
         String pos = jc_pos.getSelectedItem().toString();
         String equipo = jc_selj.getSelectedItem().toString();
+        Jugador j = new Jugador(nombre,d,0,0,0,0,0,0,pos);
+        for (int i = 0; i < selecciones.size(); i++) {
+            if (equipo.equals(selecciones.get(i))) {
+                selecciones.get(i).getJugadores().add(j);
+            }
+        }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
