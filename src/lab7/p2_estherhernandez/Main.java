@@ -3,7 +3,14 @@ package lab7.p2_estherhernandez;
 
 import java.awt.AWTEventMulticaster;
 import java.awt.Frame;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +26,9 @@ public class Main extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         LUsuarios.add(new Usuario("U000","Admin","ADmin1234","Administrador"));
        
+        
+        
+        
        
     }
 
@@ -69,13 +79,13 @@ public class Main extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jt_ns = new javax.swing.JTextField();
+        jb_ns = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jc_selj = new javax.swing.JComboBox<>();
         jTextField4 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -324,7 +334,12 @@ public class Main extends javax.swing.JFrame {
 
         jLabel5.setText("Nombre");
 
-        jButton2.setText("Agregar");
+        jb_ns.setText("Agregar");
+        jb_ns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_nsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -338,10 +353,10 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(160, 160, 160)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jt_ns, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(257, 257, 257)
-                        .addComponent(jButton2)))
+                        .addComponent(jb_ns)))
                 .addContainerGap(172, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -350,9 +365,9 @@ public class Main extends javax.swing.JFrame {
                 .addGap(181, 181, 181)
                 .addComponent(jLabel5)
                 .addGap(45, 45, 45)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jt_ns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
-                .addComponent(jButton2)
+                .addComponent(jb_ns)
                 .addContainerGap(206, Short.MAX_VALUE))
         );
 
@@ -364,13 +379,11 @@ public class Main extends javax.swing.JFrame {
 
         jLabel8.setText("Posicion");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel9.setText("Selección");
 
         jButton3.setText("Agregar");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portero", "Defensa", "Mediocampistsa", "Delantero" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -400,9 +413,9 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(57, 57, 57)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, 199, Short.MAX_VALUE)
+                            .addComponent(jc_selj, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField4)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBox2, 0, 199, Short.MAX_VALUE))))
                 .addGap(160, 160, 160))
         );
         jPanel3Layout.setVerticalGroup(
@@ -422,7 +435,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jc_selj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(59, 59, 59)
                 .addComponent(jButton3)
@@ -915,6 +928,17 @@ public class Main extends javax.swing.JFrame {
 
     private void bt_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginMouseClicked
         // TODO add your handling code here:
+        Usuario u = new Usuario();
+        u.setUsuarios(LUsuarios);
+        File archivo = null;
+        archivo = new File("./Usuarios.txt");
+        u.setArchivo(archivo);
+        try {
+            u.escribirArchivo();
+        } catch (IOException ex) {
+            
+        }
+        
         for (int i = 0; i < LUsuarios.size(); i++) {
             if (jt_usuario.getText().equals(LUsuarios.get(i).getUser())&& jt_pass.getText().equals(LUsuarios.get(i).getPw())) {
                 if (LUsuarios.get(i).getTipoU().equals("Administrador")) {
@@ -930,22 +954,44 @@ public class Main extends javax.swing.JFrame {
                     jFrame2.pack();
                     jFrame2.setLocationRelativeTo(this);
                 }    
-        } 
+        }
+            else if (jt_usuario.getText().equals(LUsuarios.get(i).getUser())&& !jt_pass.getText().equals(LUsuarios.get(i).getPw())) {
+               JOptionPane.showMessageDialog(this, "Contraseña o usuario incorrecto");
+            }
             else{
-                LUsuarios.add(new Usuario("U00"+LUsuarios.size()+1,jt_usuario.getText(),jt_pass.getText(),"Espectador"));
+                LUsuarios.add(new Usuario("U0"+1+rd.nextInt(99),jt_usuario.getText(),jt_pass.getText(),"Espectador"));
                 jFrame2.setVisible(true);
                     this.setVisible(false);
                   
                   jFrame2.pack();
                   jFrame2.setLocationRelativeTo(this);
+                  
           
             }
+        }
+        u.setUsuarios(LUsuarios);
+        u.setArchivo(archivo);
+        try {
+            u.escribirArchivo();
+        } catch (IOException ex) {
+            
         }
     }//GEN-LAST:event_bt_loginMouseClicked
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jb_nsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_nsActionPerformed
+        // TODO add your handling code here:
+        String nombre=jt_ns.getText();
+        selecciones.add(new Seleccion(nombre,0,0,0,0,0,0,0));
+        //Seleccion s = new Seleccion(nombre);
+        DefaultComboBoxModel modeloS= ( DefaultComboBoxModel) jc_selj.getModel();
+       // modeloS.addElement(s);
+        modeloS.addElement(nombre);
+        jc_selj.setModel(modeloS);
+    }//GEN-LAST:event_jb_nsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -981,6 +1027,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
+    static Random rd = new Random();
     static ArrayList <Usuario> LUsuarios = new ArrayList();
     static ArrayList <Jugador> jugadores = new ArrayList();
     static ArrayList <Seleccion> selecciones = new ArrayList();
@@ -992,14 +1039,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox12;
@@ -1073,16 +1118,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JButton jb_epartido;
+    private javax.swing.JButton jb_ns;
     private javax.swing.JComboBox<String> jc_Local;
     private javax.swing.JComboBox<String> jc_la;
     private javax.swing.JComboBox<String> jc_lr;
+    private javax.swing.JComboBox<String> jc_selj;
     private javax.swing.JComboBox<String> jc_va;
     private javax.swing.JComboBox<String> jc_visita;
     private javax.swing.JComboBox<String> jc_vr;
+    private javax.swing.JTextField jt_ns;
     private javax.swing.JPasswordField jt_pass;
     private javax.swing.JTextField jt_usuario;
     // End of variables declaration//GEN-END:variables

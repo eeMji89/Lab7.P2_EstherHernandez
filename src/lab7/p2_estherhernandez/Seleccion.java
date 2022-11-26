@@ -142,6 +142,7 @@ public class Seleccion {
     }
 
     public void setJugadores(ArrayList<Jugador> Jugadores) {
+        
         this.Jugadores = Jugadores;
     }
 
