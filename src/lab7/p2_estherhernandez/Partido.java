@@ -4,8 +4,12 @@
  */
 package lab7.p2_estherhernandez;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -134,10 +138,45 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Partido{" + "Local=" + LV + " goles=" + goles + ", posesion=" + posesion + ", tirosT=" + tirosT + ", tirosM=" + tirosM + ", faltas=" + faltas + ", jfaltas=" + jfaltas + ", jtatjetaA=" + jtatjetaA + ", jtatjetaR=" + jtatjetaR + ", jgol=" + jgol + '}';
+        return  "|" + LV + "|" + goles + "|" + posesion + "|" + tirosT + "|" + tirosM + "|" + faltas + "|" + jfaltas + "|" + jtatjetaA + "|" + jtatjetaR + "|" + jgol ;
+    }
+    
+   public void escribirArchivo() throws IOException {
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        try {
+            fw = new FileWriter(archivo, false);
+            bw = new BufferedWriter(fw);
+            for (Partido p : Partidos) {
+                bw.write(p.toString());
+            }
+            bw.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        bw.close();
+        fw.close();
+    }
+    
+    public void cargarArchivo() {
+        Scanner sc = null;
+        Partidos = new ArrayList();
+        if (archivo.exists()) {
+            try {
+                sc = new Scanner(archivo);
+                sc.useDelimiter("|");
+                while (sc.hasNext()) {
+                    Partidos.add(new Partido(sc.next(),
+                                    sc.nextInt(),
+                                    sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt()));
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            sc.close();
+        }
     }
 
-    
     
     
     

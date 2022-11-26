@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package lab7.p2_estherhernandez;
 
 import java.awt.AWTEventMulticaster;
@@ -20,7 +17,6 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         this.setLocationRelativeTo(null);
-
         LUsuarios.add(new Usuario("U000","Admin","ADmin1234","Administrador"));
        
        
@@ -986,7 +982,10 @@ public class Main extends javax.swing.JFrame {
         });
     }
     static ArrayList <Usuario> LUsuarios = new ArrayList();
-    
+    static ArrayList <Jugador> jugadores = new ArrayList();
+    static ArrayList <Seleccion> selecciones = new ArrayList();
+    static ArrayList <Grupos> grupos = new ArrayList();
+    static ArrayList <Partido> partidos = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_login;
     private javax.swing.ButtonGroup buttonGroup1;

@@ -158,7 +158,7 @@ public class Jugador {
         if (archivo.exists()) {
             try {
                 sc = new Scanner(archivo);
-                sc.useDelimiter(":");
+                sc.useDelimiter("|");
                 while (sc.hasNext()) {
                     jugadores.add(new Jugador(sc.next(),
                                     sc.nextInt(),
